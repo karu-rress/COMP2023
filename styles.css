@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@font-face {
+    font-family: 'Dotness';
+    src: url('./resources/dotness.ttf') format('truetype');
+}
+
+body {
+    background-image: url('./resources/wp9116602.jpg');
+    background-size: auto 100%;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+article {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+}
+
+h1, h2, h3 {
+    font-family: 'Dotness';
+    font-weight: lighter;
+    color: white;
+}
+
+h1 {
+    font-size: 100px;
+    margin-top: 13vh;
+    margin-bottom: 0px;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    margin-top: 0px;
+    font-size: 30px;
+}
+
+input[type="text"], span {
+    font-size: 20px;
+    color: white;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+input[type="text"] {
+
+    border: none;
+    border-bottom: 2px double white;
+    padding: 5px;
+    
+
+    background-color: transparent;
+  
+    width: 400px;
+}
+
+li {
+    display: flex;
+    width: 450px;
+    align-items: center;
+}
+
+li input {
+    transform: scale(1.5);
+    padding: 10px;
+    accent-color: grey;
+    border-radius: 0;
+}
+
+li span {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: transparent;
+    border: 2px white;
+    color: white;
+}
+
+.line_thru {
+    text-decoration: line-through;
+    color: lightgrey;
+}
