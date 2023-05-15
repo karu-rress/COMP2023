@@ -21,8 +21,5 @@ function getClock() {
     document.querySelector('h2').innerText = `${hour}:${min} ${ampm}`;
     setTimeout(getClock, 1000);
 }
-// setTimeout() it ensures timer events don't "stack" 
-// if they're left unprocessed. In some circumstances 
-// a whole load of setInterval events can arrive 
-// immediately after each other without any delay
+// setTimeout()이 setInterval()보다 예외처리 관련해서 안정성이 더 좋다..?
 getClock();

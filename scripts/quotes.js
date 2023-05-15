@@ -33,4 +33,4 @@ const quotes = [{
 ];
 const span = document.getElementById("quote");
 let pair = quotes[Math.floor(Math.random() * quotes.length)];
-span.innerText = `${pair.quote}\n - ${pair.author}`;
+span.innerText = `${pair.quote}\n ― ${pair.author}`;
