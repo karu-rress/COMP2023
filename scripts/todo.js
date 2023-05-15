@@ -20,6 +20,11 @@ function createTodo(todo) {
     input.addEventListener("change", (e) => {
         const li = e.target.parentElement;
         (li === null || li === void 0 ? void 0 : li.children[1]).classList.toggle("line_thru");
+        todoList.forEach(todo => {
+            if (todo.id === parseInt(li.id))
+                todo.checked = !todo.checked;
+        });
+        saveAll();
     });
     button.addEventListener("click", (e) => {
         const li = e.target.parentElement;
@@ -48,5 +53,16 @@ todoform.addEventListener("submit", submitHandler);
 const savedData = localStorage.getItem(TODO);
 if (savedData !== null) {
     todoList = JSON.parse(savedData);
-    todoList.forEach(createTodo);
+    todoList.forEach(todo => {
+        createTodo(todo);
+        if (todo.checked) {
+            const li = document.getElementById(`${todo.id}`);
+            const text = li === null || li === void 0 ? void 0 : li.children[1];
+            const check = li === null || li === void 0 ? void 0 : li.children[0];
+            if (text instanceof HTMLElement && check instanceof HTMLInputElement) {
+                text.classList.toggle("line_thru");
+                check.checked = true;
+            }
+        }
+    });
 }

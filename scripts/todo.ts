@@ -1,6 +1,8 @@
 type todoType = { checked: boolean, id: number, text: string };
+
 let todoList: todoType[] = [];
 const TODO = "rollingtodo";
+
 const todoform = document.querySelector("#todoform") as HTMLFormElement;
 const todobox = document.querySelector("#todoform input") as HTMLInputElement;
 const todoview = document.querySelector("#todolist") as HTMLUListElement;
@@ -25,6 +27,10 @@ function createTodo(todo: todoType) {
         const li = (e.target as HTMLElement)!.parentElement;
 
         (li?.children[1] as HTMLElement).classList.toggle("line_thru");
+        todoList.forEach(todo => {
+            if (todo.id === parseInt(li!.id)) todo.checked = !todo.checked;
+        })
+        saveAll();
     });
     button.addEventListener("click", (e: Event) => {
         const li = (e.target as HTMLElement)!.parentElement;
@@ -56,5 +62,16 @@ todoform.addEventListener("submit", submitHandler);
 const savedData = localStorage.getItem(TODO);
 if (savedData !== null) {
     todoList = JSON.parse(savedData);
-    todoList.forEach(createTodo)
+    todoList.forEach(todo => {
+        createTodo(todo);
+        if (todo.checked){
+            const li = document.getElementById(`${todo.id}`);
+            const text = li?.children[1];
+            const check = li?.children[0];
+            if (text instanceof HTMLElement && check instanceof HTMLInputElement) {
+                text.classList.toggle("line_thru");
+                check.checked = true;
+            }
+        }
+    });
 }
